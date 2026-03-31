@@ -94,3 +94,4 @@ SELECT * FROM usuario;
 SELECT * FROM dado_captado;
 SELECT * FROM empresa_parceira;
 SELECT * FROM franquia;
+
