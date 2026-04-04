@@ -56,6 +56,11 @@
     transition: 0.2s;
 }
 
+.navbar ul li button a{
+    color: white;
+    text-decoration: none;
+}
+
 .navbar ul li button:hover {
     background-color: var(--cor01);
     border: none;
