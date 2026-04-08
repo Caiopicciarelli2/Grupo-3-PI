@@ -139,20 +139,41 @@
   gap: 0.5vh;
 }
 
+.info-row-login{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 5%;
+}
+
+.info-row-login p{
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.info-row-login p span a{
+    color: var(--cor01);
+    cursor: pointer;
+}
+
 .infos-left input {
   border: 1.4px solid #8c350393;
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
   height: 100%;
   font-size: 1rem;
+  padding: 0 0.8rem;
 }
 
 .infos-right input {
   border: 1.4px solid #8c350393;
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
   height: 50%;
   font-size: 1rem;
+  padding: 0 0.8rem;
 }
 
 .cadastro-divisao {
@@ -189,8 +210,6 @@
   height: 80%;
 }
 
-
-
 .botao-entrar {
   display: flex;
   align-items: center;
@@ -214,7 +233,7 @@
   color: white;
   font-size: 0.9rem;
   width: 20%;
-  height: 55%;
+  height: 5.2vh;
   border: 3px solid rgb(255, 255, 255);
   border-radius: 1.3rem;
   cursor: pointer;
@@ -229,4 +248,58 @@
 
 .entrar button:hover {
   background-color: #26471B;
+}
+
+/*content aviso*/
+
+.container-aviso, .container-sucesso{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.content-aviso, .content-sucesso{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 25%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.90);;
+}
+
+.content-aviso{
+  border: 2px solid red;
+  border-radius: 10px;
+}
+
+.content-sucesso{
+  border: 2px solid green;
+  border-radius: 10px;
+}
+
+.row-btn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 20%;
+  width: 95%;
+}
+
+.row-btn i{
+  cursor: pointer;
+}
+
+.row-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 80%;
+  width: 90%;
 }

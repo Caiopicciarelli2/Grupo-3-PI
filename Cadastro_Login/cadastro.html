@@ -21,59 +21,90 @@
         </a>
       </div>
       <div class="content-cadastro">
-        <form action="">
-          <div class="cadastro">
-            <div class="cadastro-title">
-              <h1>Cadastre-se</h1>
-              <p>Registre sua empresa aqui!</p>
-            </div>
-            <div class="cadastro-infos">
-              <div class="infos-left">
-                <div class="info-row">
-                  <p>Nome:</p>
-                  <input class="ipt-infosL" placeholder="   Digite seu Nome" />
-                </div>
-                <div class="info-row">
-                  <p>E-mail:</p>
-                  <input class="ipt-infosL" placeholder="   Digite seu E-mail" />
-                </div>
-                <div class="info-row">
-                  <p>Telefone:</p>
-                  <input class="ipt-infosL" placeholder="   Digite seu Telefone" />
-                </div>
+        <div class="cadastro">
+          <div class="cadastro-title">
+            <h1>Cadastre-se</h1>
+            <p>Registre sua empresa aqui!</p>
+          </div>
+          <div class="cadastro-infos">
+            <div class="infos-left">
+              <div class="info-row">
+                <p>Nome:</p>
+                <input class="ipt-infosL" placeholder="Digite seu Nome" id="ipt_nome" />
               </div>
-              <div class="cadastro-divisao">
-                <div class="barra"></div>
+              <div class="info-row">
+                <p>E-mail:</p>
+                <input class="ipt-infosL" placeholder="Digite seu E-mail" id="ipt_email" />
               </div>
-              <div class="infos-right">
-                <div class="info-row-senha">
-                  <p>Criar Senha:</p>
-                  <input class="ipt-infosR" placeholder="   Digite sua Senha" />
-                </div>
-                <div class="info-row-description">
-                  <h6>
-                    A senha deve conter, no mínimo, 8 caracteres e incluir uma
-                    combinação de letras maiúsculas e minúsculas, pelo menos um
-                    número e um caractere especia. Evite utilizar informações
-                    pessoais, como nome, data de nascimento
-                  </h6>
-                </div>
-                <div class="info-row-senha">
-                  <p>Confirme sua Senha:</p>
-                  <input type="text" placeholder="   Digite sua Senha" />
-                </div>
+              <div class="info-row">
+                <p>Telefone:</p>
+                <input class="ipt-infosL" placeholder="Digite seu Telefone" id="ipt_telefone" />
               </div>
             </div>
-            <div class="botao-entrar">
-              <div class="entrar">
-                <button>Entrar</button>
-                <p>© 2026 FlowTrak</p>
+            <div class="cadastro-divisao">
+              <div class="barra"></div>
+            </div>
+            <div class="infos-right">
+              <div class="info-row-senha">
+                <p>Criar Senha:</p>
+                <input class="ipt-infosR" placeholder="Digite sua Senha" id="ipt_senha" />
+              </div>
+              <div class="info-row-description" style="display: none;">
+                <h6 style="color: red; font-weight: 600;">
+                  A senha deve conter, no mínimo, 8 caracteres e incluir uma
+                  combinação de letras maiúsculas e minúsculas, pelo menos um
+                  número e um caractere especia.
+                </h6>
+              </div>
+              <div class="info-row-senha">
+                <p>Confirme sua Senha:</p>
+                <input type="text" placeholder="Digite sua Senha" id="ipt_senha_confirmacao" />
+              </div>
+              <div class="info-row-login">
+                <p>
+                  Já tem uma conta?
+                  <span>
+                    <a href="../Cadastro_Login/login.html">Faça seu login</a>
+                  </span>
+                </p>
               </div>
             </div>
           </div>
-        </form>
+          <div class="botao-entrar">
+            <div class="entrar">
+              <button onclick="cadastro_verificacao()">Entrar</button>
+              <p>© 2026 FlowTrak</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-aviso">
+      <div class="content-aviso">
+        <div class="row-btn">
+            <i class="fa-regular fa-circle-xmark" id="btn_fechar_aviso"></i>
+        </div>
+        <div class="row-text">
+          <h1>Aviso:</h1>
+          <p id="erro_status"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-sucesso">
+      <div class="content-sucesso">
+        <div class="row-btn">
+            <i class="fa-regular fa-circle-xmark" id="btn_fechar_sucesso"></i>
+        </div>
+        <div class="row-text">
+          <h1>Aviso:</h1>
+          <p id="sucesso"></p>
+        </div>
       </div>
     </div>
 </body>
 
 </html>
+
+<script src="./assets/js/script.js"></script>
