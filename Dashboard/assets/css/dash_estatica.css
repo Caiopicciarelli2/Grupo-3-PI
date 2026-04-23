@@ -56,3 +56,18 @@
     width: 90%;
     height: 60%;
 }
+
+.geral-right-titulo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    height: 10%;
+}
+.geral-right-grafico{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    height:90%;
+}
