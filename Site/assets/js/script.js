@@ -1,14 +1,3 @@
-function redirecionamento_login() {
-    window.location.href = "../cadastro-Login/login.html";
-}
-
-function redirecionamento_simulador() {
-    window.location.href = '../simulador-financeiro/Simulador.html'
-}
-
-function redirecionamento_contato() {
-    window.location.href = './contato.html'
-}
 
 /*
     Script simulador
