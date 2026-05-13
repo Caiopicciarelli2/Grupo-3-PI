@@ -1,6 +1,9 @@
 // verificação login 
+
 function cadastro_verificacao() {
+
     // entrada 
+
     let nome = (ipt_nome.value);
     let email = (ipt_email.value);
     let telefone = (ipt_telefone.value);
@@ -11,11 +14,15 @@ function cadastro_verificacao() {
     let sucesso_cadastro = false;
 
     // código do erro:
+
     erro_status.innerHTML = ``;
+
     // código de sucesso
+
     sucesso.innerHTML = ``;
 
     // elementos HTML
+
     let senha_erro = document.querySelector('.info-row-description');
     let content_erro = document.querySelector('.container-aviso');
     let content_sucesso = document.querySelector('.container-sucesso');
@@ -25,6 +32,7 @@ function cadastro_verificacao() {
     }
 
     // verificação nome mínimo 3
+
     if (nome == "" || email == "" || telefone == "" || senha == "" || senha_confirmacao == "") {
         content_erro.style.display = 'flex';
         erro_status.innerHTML = `Preencha os campos corretamentes!`;
@@ -56,6 +64,7 @@ function cadastro_verificacao() {
 };
 
 // fechar modais de aviso
+
 let content_erro = document.querySelector('.container-aviso');
 let content_sucesso = document.querySelector('.container-sucesso')
 let btn_fechar_sucesso = document.getElementById('btn_fechar_sucesso');
