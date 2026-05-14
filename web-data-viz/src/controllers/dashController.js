@@ -1,4 +1,4 @@
-var medidaModel = require("../models/dashModel");
+var dashModel = require("../models/dashModel");
 
 function buscarUltimasMedidas(req, res) {
 
@@ -8,7 +8,7 @@ function buscarUltimasMedidas(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(id_grafico, limite_linhas).then(function (resultado) {
+    dashModel.buscarUltimasMedidas(id_grafico, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -28,7 +28,7 @@ function buscarMedidasEmTempoReal(req, res) {
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(id_grafico).then(function (resultado) {
+    dashModel.buscarMedidasEmTempoReal(id_grafico).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

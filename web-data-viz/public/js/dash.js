@@ -2,74 +2,98 @@
 
     let proximaAtualizacao;
 
-    window.onload = exibirDadosDoUsuario();
+    window.onload = exibirGraficoLinha(), exibirGraficoCalor();
 
-    function exibirDadosDoUsuario() {
-        var dados = JSON.parse(sessionStorage.DADOS);
-        dados.forEach(item => {
-            document.getElementById("btnDados").innerHTML += `
-            <button class="btn-chart" onclick="exibirDados(${item.id})" id="btnDados${item.id}">${item.descricao}</button>
-            `
-
+    function exibirGraficoLinha() {
+        var id_grafico = 'linha';
+        // dados.forEach(item => {
+        //     document.getElementById("btnDados").innerHTML += `
+        //     <button class="btn-chart" onclick="exibirDados(${item.id})" id="btnDados${item.id}">${item.descricao}</button>
             document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
+                <div id="grafico-${id_grafico}" class="display-none">
                     <h3 class="tituloGraficos">
-                        <span id="tituloDados${item.id}">${item.descricao}</span>
+                        <span id="tituloGrafico-Linha">Fluxo de pessoas ao longo do dia</span>
                     </h3>
                     <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
+                        <canvas id="myChartCanvas-${id_grafico}"></canvas>
                     </div>
                     <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                        <p id="avisoCaptura${id_grafico}" style="color: white"></p>
                     </div>
                 </div>
             `
 
-            obterDadosGrafico(item.id)
-        });
+            obterDadosGrafico(id_grafico)
+        ;
 
-        if (dados.length > 0) {
-            exibirDados(dados[0].id)
-        }
+        // if (dados.length > 0) {
+        //     exibirDados(dados[0].id)
+        // }
     }
 
+        function exibirGraficoCalor() {
+        var id_grafico = 'calor';
+        // dados.forEach(item => {
+        //     document.getElementById("btnDados").innerHTML += `
+        //     <button class="btn-chart" onclick="exibirDados(${item.id})" id="btnDados${item.id}">${item.descricao}</button>
+            document.getElementById("graficos").innerHTML += `
+                <div id="grafico${id_grafico}" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloGrafico-Calor">Mapa de Calor - Fluxo por local</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas${id_grafico}"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura${id_grafico}" style="color: white"></p>
+                    </div>
+                </div>
+            `
+
+            obterDadosGrafico(id_grafico)
+        ;
+
+        // if (dados.length > 0) {
+        //     exibirDados(dados[0].id)
+        // }
+    }
     // function alterarTitulo(id) {
     //     var tituloAquario = document.getElementById(`tituloAquario${id}`)
     //     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == id).descricao;
     //     tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
     // }
 
-    function exibirDados(id) {
-        let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+    // function exibirDados(id) {
+    //     let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
-            if (todosOsGraficos[i].id != id) {
-                let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-                if (elementoAtual.classList.contains("display-block")) {
-                    elementoAtual.classList.remove("display-block")
-                }
-                elementoAtual.classList.add("display-none")
+    //     for (i = 0; i < todosOsGraficos.length; i++) {
+    //         // exibindo - ou não - o gráfico
+    //         if (todosOsGraficos[i].id != id) {
+    //             let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
+    //             if (elementoAtual.classList.contains("display-block")) {
+    //                 elementoAtual.classList.remove("display-block")
+    //             }
+    //             elementoAtual.classList.add("display-none")
 
-                // alterando estilo do botão
-                let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-                if (btnAtual.classList.contains("btn-pink")) {
-                    btnAtual.classList.remove("btn-pink")
-                }
-                btnAtual.classList.add("btn-white")
-            }
-        }
+    //             // alterando estilo do botão
+    //             let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+    //             if (btnAtual.classList.contains("btn-pink")) {
+    //                 btnAtual.classList.remove("btn-pink")
+    //             }
+    //             btnAtual.classList.add("btn-white")
+    //         }
+    //     }
 
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${id}`)
-        graficoExibir.classList.remove("display-none")
-        graficoExibir.classList.add("display-block")
+    //     // exibindo - ou não - o gráfico
+    //     let graficoExibir = document.getElementById(`grafico${id}`)
+    //     graficoExibir.classList.remove("display-none")
+    //     graficoExibir.classList.add("display-block")
 
-        // alterando estilo do botão
-        let btnExibir = document.getElementById(`btnAquario${id}`)
-        btnExibir.classList.remove("btn-white")
-        btnExibir.classList.add("btn-pink")
-    }
+    //     // alterando estilo do botão
+    //     let btnExibir = document.getElementById(`btnAquario${id}`)
+    //     btnExibir.classList.remove("btn-white")
+    //     btnExibir.classList.add("btn-pink")
+    // }
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -90,7 +114,7 @@
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/dash/ultimas/${id}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/dash/ultimas/-${id_grafico}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
