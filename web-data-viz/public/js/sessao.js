@@ -30,6 +30,7 @@ function finalizarAguardar(texto) {
     var divErrosLogin = document.getElementById("div_erros_login");
     if (texto) {
         divErrosLogin.style.display = "flex";
+        // divErrosLogin.style.position = "absolute";
         divErrosLogin.innerHTML = texto;
     }
 }
