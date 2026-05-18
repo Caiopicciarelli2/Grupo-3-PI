@@ -42,10 +42,10 @@
                 <p>E-mail:</p>
                 <input class="ipt-infosL" placeholder="Digite seu E-mail" id="ipt_email" />
               </div>
-              <div class="info-row">
+              <!-- <div class="info-row">
                 <p>Telefone:</p>
                 <input class="ipt-infosL" placeholder="Digite seu Telefone" id="ipt_telefone" />
-              </div> 
+              </div>  -->
             </div>
             <div class="cadastro-divisao">
               <div class="barra"></div>
@@ -143,7 +143,8 @@
     var nomeVar = ipt_nome.value;
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
-		var telefoneVar = ipt_telefone.value;
+    var empresaVar = 1;
+		// var telefoneVar = ipt_telefone.value;
     var confirmacaoSenhaVar = ipt_senha_confirmacao.value;
 
     // Verificando se há algum campo em branco
@@ -151,8 +152,8 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-			telefone == ""
+      confirmacaoSenhaVar == ""
+			// telefone == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -177,7 +178,9 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-				telefoneServer: telefoneVar
+        empresaServer: empresaVar
+      
+				// telefoneServer: telefoneVar
         // idEmpresaVincularServer: idEmpresaVincular
       }),
     })
