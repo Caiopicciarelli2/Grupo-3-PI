@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS flowtrak;
-CREATE DATABASE flowtrak;
+CREATE DATABASE flowtrak;
 USE flowtrak;
 
 CREATE TABLE empresa_parceira(
@@ -77,8 +76,81 @@ INSERT INTO sensor (fk_ponto, status) VALUES
 INSERT INTO dado_captado (data_hora, fluxo, fk_sensor) VALUES 
 ('2023-10-27 08:00:00', 1, 1),
 ('2023-10-27 08:05:00', 1, 1),
-('2023-10-27 08:10:00', 0, 2),
+('2023-10-27 08:10:00', 1, 2),
 ('2023-10-27 09:00:00', 1, 3),
 ('2023-10-27 09:30:00', 1, 5);
+
+SELECT * FROM sensor;
+SELECT * FROM ponto_monitoramento;
+SELECT * FROM usuario;
+SELECT * FROM dado_captado;
+SELECT * FROM empresa_parceira;
+SELECT * FROM franquia;
+
+SELECT
+	s.status, 
+    p.nome, 
+    e.nome 
+FROM sensor AS s
+JOIN ponto_monitoramento AS p ON s.fk_ponto = id_ponto_monitoramento
+JOIN empresa_parceira AS e ON e.id_empresa = fk_empresa;
+
+SELECT 
+	s.nome,
+  s.id_sensor
+FROM sensor AS s
+	JOIN dado_captado AS dc ON dc.fk_sensor = id_sensor;
+
+ALTER TABLE sensor ADD COLUMN nome VARCHAR(45);
+
+UPDATE sensor SET nome = 'Caixa1' WHERE id_sensor = 1;
+UPDATE sensor SET nome = 'Caixa2' WHERE id_sensor = 2;
+UPDATE sensor SET nome = 'Corredor Doces' WHERE id_sensor = 3;
+UPDATE sensor SET nome = 'Corredor Limpeza' WHERE id_sensor = 4;
+UPDATE sensor SET nome = 'Frios' WHERE id_sensor = 5;
+UPDATE sensor SET nome = 'Entrada' WHERE id_sensor = 3;
+UPDATE sensor SET nome = 'Saída' WHERE id_sensor = 4;
+
+
+SELECT 
+	s.id_sensor,
+	pm.nome,
+	dc.fluxo,
+	dc.data_hora
+FROM ponto_monitoramento AS pm 
+	JOIN sensor AS s ON fk_ponto = id_ponto_monitoramento
+  JOIN dado_captado AS dc ON fk_sensor = id_sensor
+WHERE dc.data_hora 
+	BETWEEN '2023-10-27 08:00:00' AND '2023-10-27 09:30:00';
+    
+-- Views para Dashboard
+
+CREATE VIEW dashGraficosLinha AS 
+SELECT 
+            emp.id_empresa_parceira AS id_empresa,
+            emp.franqueadora AS is_franquiadora,
+            pt.id_ponto_monitoramento AS id_ponto,
+            pt.nome AS nome_ponto,
+            pt.fk_empresa,
+            an.id_sensor,
+            sn.nome AS nome_sensor,
+            sn.status AS status_sensor,
+            sn.fk_ponto,
+            d_cpt.id_dado_captado AS id_dado_cpt,
+            d_cpt.data_hora AS momento_grafico,
+            d_cpt.fluxo,
+            d_cpt.fk_sensor
+        FROM empresa_parceira AS emp
+            JOIN empresa_parceira AS franq
+                ON emp.franqueadora = franq.id_empresa
+            JOIN ponto_monitoramento AS pt
+                ON pt.fk_empresa = emp.id_empresa
+            JOIN sensor AS sn
+                ON sn.fk_ponto = pt.id_ponto
+            JOIN dado_captado AS d_cpt
+                ON d_cpt.fk_sensor = sn.id_sensor
+        WHERE id_empresa = 6
+        ORDER BY momento_grafico DESC 
+        LIMIT 7;
 
 
