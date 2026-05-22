@@ -119,6 +119,15 @@
   gap: 1.2vh;
 }
 
+.infos-right button {
+  padding: 10px 30px;
+  align-items: center;
+}
+
+.infos-right .botao-entrar .entrar h4{
+  align-items: flex-start;
+}
+
 .info-row {
   display: flex;
   align-items: flex-start;
